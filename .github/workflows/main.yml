@@ -24,7 +24,7 @@ jobs:
         run: |
           rm -rf project
           mkdir project
-          unzip -q Nawaf_Quiz_V4-3.zip -d project
+          unzip -q Nawaf_Past_Simple_Quiz_Android_Project.zip -d project
 
       - name: Find project
         run: |
