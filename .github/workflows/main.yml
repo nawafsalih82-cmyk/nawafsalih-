@@ -22,7 +22,7 @@ jobs:
 
       - name: Extract Android project
         run: |
-          unzip -q Nawaf_Past_Simple_Quiz_Android_Project.zip -d project
+          unzip -q Nawaf_Past_Simple_Quiz_Android_Project_v3.zip -d project
           mkdir -p project/app/src/main/res/raw
           mv project/app/src/main/res/drawable/applause.wav project/app/src/main/res/raw/
           mv project/app/src/main/res/drawable/wrong.wav project/app/src/main/res/raw/
