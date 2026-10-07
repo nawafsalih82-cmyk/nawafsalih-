@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#081A35"/>
+      <stop offset="100%" stop-color="#173B70"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="100" fill="url(#bg)"/>
+  <!-- Decorative Ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="4"/>
+  <!-- Graduation / Book & Clock Quiz Emblem -->
+  <!-- Book base -->
+  <path d="M120 330 C180 300 240 320 256 335 C272 320 332 300 392 330 L392 230 C332 200 272 220 256 235 C240 220 180 200 120 230 Z" fill="#FFFFFF" opacity="0.95"/>
+  <path d="M256 235 L256 335" stroke="#173B70" stroke-width="4" stroke-linecap="round"/>
+  <!-- Graduation Cap -->
+  <polygon points="256,120 380,180 256,230 132,180" fill="url(#gold)"/>
+  <path d="M180,205 L180,260 C180,285 332,285 332,260 L332,205" fill="none" stroke="url(#gold)" stroke-width="12" stroke-linecap="round"/>
+  <!-- Tassel -->
+  <path d="M350 185 C360 210 365 240 365 260" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="365" cy="265" r="8" fill="#FFFFFF"/>
+  <!-- Text Past Simple -->
+  <text x="256" y="405" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-weight="900" font-size="34" letter-spacing="2">PAST SIMPLE</text>
+  <text x="256" y="445" text-anchor="middle" fill="#93C5FD" font-family="system-ui, sans-serif" font-weight="bold" font-size="22">نواف المتيوتي</text>
+</svg>

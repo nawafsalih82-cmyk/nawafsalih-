@@ -1,0 +1,6 @@
+{
+  "name": "تصريف الأفعال - الماضي البسيط",
+  "description": "تطبيق تعليمي تفاعلي لتعلم واختبار تصريف الأفعال في زمن الماضي البسيط (Past Simple) - تصميم الأستاذ نواف المتيوتي (نواف صالح)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
