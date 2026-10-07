@@ -1,4 +1,4 @@
-name: Build Debug APK
+name: Build APK
 
 on:
   push:
@@ -6,59 +6,49 @@ on:
       - main
   workflow_dispatch:
 
-permissions:
-  contents: read
-
 jobs:
   build:
-    name: Build Android APK
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Java 17
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "17"
+          java-version: '17'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-
-      - name: Extract V4 project
-        shell: bash
+      - name: Extract V4
         run: |
-          set -e
-
           rm -rf project
-          mkdir -p project
+          mkdir project
+          unzip -q Nawaf_Quiz_V4-3.zip -d project
 
-          unzip -q "Nawaf_Quiz_V4-3.zip" -d project
-
-          echo "ZIP extracted successfully."
-
-      - name: Locate Android project
-        shell: bash
+      - name: Find project
         run: |
-          set -e
-
-          SETTINGS_FILE=$(find project -type f \
-            -name "settings.gradle" \
-            -o -name "settings.gradle.kts" \
-          -print -quit)
-
-          if [ -z "$SETTINGS_FILE" ]; then
-            echo "ERROR: settings.gradle or settings.gradle.kts was not found."
-            echo "Files inside ZIP:"
-            find project -maxdepth 4 -type f
+          PROJECT=$(find project -name gradlew -type f -print -quit)
+          if [ -z "$PROJECT" ]; then
+            echo "Android project not found"
             exit 1
           fi
+          DIR=$(dirname "$PROJECT")
+          echo "PROJECT_DIR=$DIR" >> "$GITHUB_ENV"
 
-          PROJECT_DIR=$(dirname "$SETTINGS_FILE")
+      - name: Build
+        run: |
+          cd "$PROJECT_DIR"
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
 
-          echo "Android project:"
-          echo "$PROJECT_DIR"
+      - name: Copy APK
+        run: |
+          mkdir -p output
+          cp "$PROJECT_DIR"/app/build/outputs/apk/debug/app-debug.apk output/app-debug.apk
 
-          echo "PROJECT_DIR=$PROJECT_DIR" >> "$
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug
+          path: output/app-debug.apk
